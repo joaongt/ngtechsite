@@ -1,0 +1,611 @@
+/* IMPORTS */
+
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lemon&display=swap");
+
+/* INITIAL CONFIGURATION */
+
+* {
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  font-family: "Kanit", sans-serif;
+}
+
+html, body{
+    overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* POPUP */
+
+.popup-overlay {
+  background-color: #033265;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+}
+
+/* Botão de fechar */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #FFF;
+}
+
+.popup {
+  padding: 1em 6em;
+  background-color: #033265;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup p {
+  background-color: #033265;
+  font-weight: medium;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.popup p strong {
+  background-color: #033265;
+  font-weight: bold;
+  color: #9bccce;
+  font-size: 14px;
+}
+
+.popup a {
+  background-color: #033265;
+  text-decoration: none;
+  color: #9bccce;
+}
+
+/* HEADER */
+
+header {
+  padding: 1em 6em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .logo img{
+  width: 240px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2em;
+}
+
+header nav ul li a {
+  text-decoration: none !important;
+  font-family: "Lemon", serif;
+  font-size: 14px;
+  color: #033265;
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Transição suave */
+}
+
+header nav ul li a::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("/img/arrow.svg"); /* Caminho da imagem */
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: 0.5em;
+  vertical-align: middle; /* Mantém alinhado ao texto */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Transição suave */
+}
+
+header nav ul li a:hover {
+  color: #9bccce;
+}
+
+header nav ul li a:hover::after {
+  background-image: url("/img/arrow-hover.svg"); /* Troca para a versão colorida */
+  margin-top: 0.3em;
+}
+
+/* FIRST SECTION */
+
+main .first-section {
+  background-color: #033265;
+  padding: 0 0 0 6em;
+  display: flex;
+  align-items: self-start;
+  justify-content: space-between;
+}
+
+main .first-section div {
+  background-color: #033265;
+  display: table-column;
+  justify-content: center;
+  align-items: center;
+}
+
+main .first-section div h2 {
+  margin-top: 4em;
+  color: #9bccce;
+  background-color: #033265;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 20px;
+  max-width: 450px;
+}
+
+main .first-section div h3 {
+  color: #FFFFFF;
+  background-color: #033265;
+  font-weight: 400;
+  font-size: 40px;
+  max-width: 450px;
+}
+
+main .first-section div p {
+  margin-top: 1.5em;
+  color: #FFFFFF;
+  background-color: #033265;
+  font-weight: 300;
+  font-size: 18px;
+  max-width: 450px;
+}
+
+main .first-section .kids-image img {
+  width: 800px; /* Aumenta a largura */
+  height: auto; /* Mantém a proporção */
+}
+
+/* SECOND SECTION */
+
+main .second-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main .second-section h2 {
+  margin-top: 4em;
+  color: #033265;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 20px;
+  max-width: 450px;
+}
+
+main .second-section h3 {
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 40px;
+}
+
+main .second-section .section-info {
+  margin-top: 3em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3em;
+}
+
+main .second-section .section-info .cores {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 280px; /* Largura do card */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 15px; /* Cantos arredondados */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  z-index: 99;
+}
+
+main .second-section .section-info .cores div {
+  background-color: inherit;
+}
+
+main .second-section .section-info .cores .circle {
+  width: 35px; /* Tamanho do círculo */
+  height: 35px;
+  border-radius: 50%; /* Faz o formato ser um círculo */
+  margin-right: 1em;
+}
+
+/* childrens */
+
+main .second-section .section-info #co-orange {
+  background-color: #c57733;
+}
+
+main .second-section .section-info .cores #ci-orange {
+  background-color: #f8c394; /* Cor laranja do círculo */
+}
+
+main .second-section .section-info #co-green {
+  background-color: #2ab16f;
+}
+
+main .second-section .section-info .cores #ci-green {
+  background-color: #83f1bc; /* Cor verde do círculo */
+}
+
+main .second-section .section-info #co-blue {
+  background-color: #28acc0;
+}
+
+main .second-section .section-info .cores #ci-blue {
+  background-color: rgb(122, 224, 240); /* Cor azul do círculo */
+}
+
+/* texts */
+
+main .second-section .section-info div h4 {
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 24px;
+  margin-top: 0.5em; /* Espaço após o círculo */
+  background-color: inherit;
+}
+
+main .second-section .section-info div p {
+  color: #FFFFFF;
+  font-weight: 300;
+  font-size: 16px;
+  margin: 1em 0;
+  background-color: inherit;
+}
+
+main .second-section .section-info div span {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFFFFF;
+  margin-top: 1em;
+  cursor: pointer;
+  background-color: inherit;
+  text-decoration: underline;
+  text-transform: capitalize;
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Transição suave */
+}
+
+main .second-section .section-info div span:hover {
+  color: #033265;
+}
+
+/* whatsapp */
+
+main .second-section .whats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main .second-section .whats h2 {
+  margin-top: 4em;
+  color: #033265;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+main .second-section .whats button {
+  margin-top: 1em;
+  background-color: #033265;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.3em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Transição suave */
+}
+
+main .second-section .whats button:hover {
+  background-color: #055a34;
+}
+
+main .second-section .whats button img {
+  height: auto;
+  width: 15px;
+  background-color: inherit;
+}
+
+main .second-section .whats button span {
+  background-color: inherit;
+}
+
+/* THIRD SECTION */
+
+main .third-section {
+  margin-top: 4em;
+  background-color: #033265;
+  padding: 0 0 0 6em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* images */
+
+main .third-section .images {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza a coluna */
+  gap: 2em; /* Espaçamento entre as imagens */
+  position: relative;
+  background-color: inherit;
+}
+
+main .third-section .images img {
+  position: relative; /* Permite movimentar as imagens */
+  width: 300px;
+  height: auto;
+}
+
+main .third-section .images img:first-child {
+  left: -60px; /* Move a primeira imagem um pouco para a esquerda */
+}
+
+main .third-section .images img:last-child {
+  right: -60px; /* Move a segunda imagem um pouco para a direita */
+}
+
+main .third-section .section-info {
+  background-color: inherit;
+}
+
+main .third-section .section-info h2 {
+  margin-top: 4em;
+  color: #9bccce;
+  background-color: inherit;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 20px;
+  max-width: 450px;
+}
+
+main .third-section .section-info h3 {
+  color: #FFFFFF;
+  background-color: inherit;
+  font-weight: 400;
+  font-size: 40px;
+  max-width: 450px;
+}
+
+main .third-section .section-info p {
+  margin-top: 1.5em;
+  color: #FFFFFF;
+  background-color: inherit;
+  font-weight: 300;
+  font-size: 18px;
+  max-width: 450px;
+  margin-bottom: 3em;
+}
+
+main .third-section .section-info .cards {
+  background-color: inherit;
+  display: flex;
+  gap: 0.5em;
+}
+
+main .third-section .section-info .cards .spans {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 29px; /* Definir largura fixa */
+  height: 29px; /* Definir altura igual à largura */
+  background-color: #d9d9d9;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+main .third-section .section-info .cards .spans span {
+  font-size: 16px;
+  font-weight: 400;
+  background-color: inherit;
+}
+
+main .third-section .section-info .cards .text-box {
+  background-color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+main .third-section .section-info .cards .text-box h4 {
+  background-color: inherit;
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 20px;
+  height: 10px;
+}
+
+main .third-section .section-info .cards .text-box p {
+  background-color: inherit;
+  margin-top: 1.5em;
+  color: #FFFFFF;
+  font-weight: 300;
+  font-size: 18px;
+  max-width: 430px;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: #9bccce;
+  color: #033265;
+  padding: 1em;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
+
+footer div {
+  background-color: inherit;
+}
+
+footer div #logo a {
+  background-color: inherit;
+}
+
+footer div #logo a img {
+  width: 80px;
+  background-color: inherit;
+}
+
+
+#copy {
+  padding: 1em;
+  background-color: #033265;
+  color: #FFF;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* MEDIA QUERIES */
+
+/* Tablets (menor que 1024px) */
+@media (max-width: 1024px) {
+  /* FIRST SECTION */
+
+  main .first-section .kids-image img {
+    width: 450px; /* Deminui a largura */
+  }
+}
+
+/* Celulares (menor que 768px) */
+@media (max-width: 768px) {
+  /* POPUP */
+
+  .popup {
+    padding: 2em 1em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .popup p {
+    font-size: 10px;
+  }
+
+  .popup p strong {
+    font-size: 10px;
+  }
+
+  /* HEADER */
+
+  header {
+    padding: 1em 0.5em;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  /* FIRST SECTION */
+
+  main .first-section {
+    padding: 0 0.5em;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  main .first-section div h2 {
+    margin-top: 1em;
+  }
+
+  main .first-section div p {
+    margin-bottom: 1.5em;
+  }
+
+  /* SECOND SECTION */
+
+  main .second-section {
+    width: 100%;
+  }
+
+  main .second-section h2 {
+    margin-top: 2em;
+  }
+
+  main .second-section h3 {
+    text-align: center;
+  }
+
+  /* whatsapp */
+
+  main .second-section .whats h2 {
+    margin-top: 2em;
+  }
+
+  /* THIRD SECTION */
+
+  main .third-section {
+    margin-top: 1em;
+    padding: 0 0.5em;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* images */
+
+  main .third-section .images {
+    flex-direction: row;
+    gap: 0; /* Espaçamento entre as imagens */
+    position: static;
+  }
+
+  main .third-section .images img {
+    position: static;
+    width: 220px;
+  }
+
+  main .third-section .images img:first-child {
+    left: auto; /* Move a primeira imagem um pouco para a esquerda */
+  }
+
+  main .third-section .images img:last-child {
+    right: auto; /* Move a segunda imagem um pouco para a direita */
+  }
+
+  /* FOOTER */
+
+  footer {
+    padding: 1em;
+    width: 100%;
+  }
+}
+
+/* Celulares pequenos (menor que 480px) */
+@media (max-width: 480px) {
+  main .third-section .images {
+    flex-direction: row; /* Still keep row layout */
+  }
+
+  main .third-section .images img {
+    min-width: 200px; /* Ensure images don't get too small */
+  }
+}
