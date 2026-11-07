@@ -135,61 +135,62 @@
     });
   }
 
-  // Profit calculator.
-  const calc = document.querySelector('[data-calc]');
-  if (calc) {
-    const field = id => document.getElementById(id);
-    const inputs = ['c-price', 'c-cost', 'c-fee', 'c-ship', 'c-orders'].map(field);
-    const big = field('r-profit');
-    const margin = field('r-margin');
-    const month = field('r-month');
-    const status = field('r-status');
-    const cta = field('r-cta');
-    const segments = calc.querySelectorAll('[data-calc-seg]');
+  // Discount test: one slider that shows how quickly profit disappears.
+  const testBox = document.querySelector('[data-test]');
+  if (testBox) {
+    const range = document.getElementById('t-discount');
+    const value = document.getElementById('t-value');
+    const profitOut = document.getElementById('t-profit');
+    const bar = document.getElementById('t-bar');
+    const status = document.getElementById('t-status');
+    const base = { price: 120, cost: 62, feeRate: 0.18, ship: 22 };
+    const profitAt = discount => {
+      const price = base.price * (1 - discount / 100);
+      return price - base.cost - price * base.feeRate - base.ship;
+    };
+    const full = profitAt(0);
 
-    function update() {
-      const [price, cost, feeRate, ship, orders] = inputs.map(input => Math.max(Number(input.value) || 0, 0));
-      if (price <= 0) {
-        big.value = '—';
-        margin.value = '—';
-        month.value = '—';
-        status.dataset.level = 'warn';
-        status.textContent = 'Informe um preço de venda para ver o resultado.';
-        return;
-      }
-      const fee = price * (feeRate / 100);
-      const profit = price - cost - fee - ship;
-      const rate = (profit / price) * 100;
-      big.value = brl.format(profit);
-      big.classList.toggle('is-negative', profit < 0);
-      margin.value = pct(rate);
-      month.value = brl.format(profit * orders);
-
-      const total = cost + fee + ship + Math.max(profit, 0);
-      const parts = { cost, fee, ship, profit: Math.max(profit, 0) };
-      segments.forEach(node => {
-        node.style.width = `${total > 0 ? (parts[node.dataset.calcSeg] / total) * 100 : 0}%`;
-      });
-
+    function render() {
+      const discount = Number(range.value);
+      const profit = profitAt(discount);
+      const lost = Math.round((1 - profit / full) * 100);
+      value.value = `${discount}%`;
+      profitOut.value = brl.format(profit);
+      profitOut.classList.toggle('is-negative', profit < 0);
+      bar.style.width = `${Math.max(profit / full, 0) * 100}%`;
       if (profit < 0) {
         status.dataset.level = 'bad';
-        status.textContent = 'Atenção: com esses números, cada venda dá prejuízo.';
-      } else if (rate < 15) {
-        status.dataset.level = 'warn';
-        status.textContent = 'Margem apertada: uma promoção ou aumento de frete pode zerar o lucro.';
-      } else {
+        status.textContent = 'Agora cada venda dá prejuízo, e o volume só aumenta a perda.';
+      } else if (discount === 0) {
         status.dataset.level = 'ok';
-        status.textContent = 'Boa base. Vale conferir se essa margem se mantém com promoções e devoluções.';
+        status.textContent = 'Margem de 12%. Parece pouco, mas ainda é lucro.';
+      } else {
+        status.dataset.level = 'warn';
+        status.textContent = `Um desconto de ${discount}% levou ${lost}% do seu lucro.`;
       }
-      cta.href = whatsapp(`Oi! Fiz a simulação no site da NGTech e minha margem deu ${pct(rate)}. Quero revisar minha precificação.`);
     }
 
-    calc.querySelectorAll('input[type=range]').forEach(range => {
-      const number = field(range.dataset.for);
-      range.addEventListener('input', () => { number.value = range.value; update(); });
-      number.addEventListener('input', () => { range.value = number.value; update(); });
-    });
-    update();
+    let touched = false;
+    range.addEventListener('input', () => { touched = true; render(); });
+    render();
+
+    // Shows the effect once on arrival, so visitors see the slider is alive.
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const demo = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        demo.disconnect();
+        const startTime = performance.now();
+        const step = now => {
+          if (touched) return;
+          const progress = Math.min((now - startTime) / 1400, 1);
+          range.value = Math.round(progress * 10);
+          render();
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }, { threshold: 0.5 });
+      demo.observe(testBox);
+    }
   }
 
   // Two-question guide.

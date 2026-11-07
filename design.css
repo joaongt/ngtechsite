@@ -226,6 +226,24 @@ a:hover>.pain-link::after{transform:translateX(5px)}
 .wa-float span{max-width:0;overflow:hidden;white-space:nowrap;transition:max-width .35s var(--ease),margin .35s var(--ease)}
 .wa-float:hover span,.wa-float:focus-visible span{max-width:190px;margin-left:10px}
 
+/* Home: question doors, discount test and compact cases */
+.door-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.door{padding:32px}
+.door .svc-tag{align-self:flex-start;margin-bottom:18px}
+.door q{font-size:clamp(23px,2.4vw,30px);line-height:1.2;letter-spacing:-.02em}
+.test-box{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
+.test-copy p{color:var(--muted)}
+.test-label{display:block;margin-top:24px;font-size:16px;font-weight:700}
+.test-label output{color:var(--cyan);font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+#t-discount{width:100%;margin:12px 0 4px;accent-color:var(--cyan);cursor:pointer}
+.test-result{display:flex;flex-direction:column;align-items:flex-start;padding:30px;border:1px solid #00cfea4d;border-radius:14px;background:radial-gradient(90% 70% at 100% 0,#0865f53d,transparent 70%),var(--panel)}
+.test-result small{font-size:13px;color:var(--muted)}
+.test-meter{width:100%;height:12px;margin:16px 0 4px;border-radius:6px;background:var(--line);overflow:hidden}
+.test-meter i{display:block;height:100%;width:100%;border-radius:6px;background:var(--grad);transition:width .25s ease-out}
+.case-grid-compact .case-card{color:inherit}
+.case-grid-compact .case-copy{padding:20px 22px 22px}
+.case-grid-compact h3{font-size:22px;margin:6px 0 12px}
+
 /* Motion keyframes */
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes aurora{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(3%,3%,0) scale(1.08)}}
@@ -246,7 +264,7 @@ a:hover>.pain-link::after{transform:translateX(5px)}
 }
 @media(max-width:1000px){
  .hero2{padding-top:48px}
- .hero2-grid,.calc,.guide,.promise{grid-template-columns:minmax(0,1fr)}
+ .hero2-grid,.calc,.guide,.promise,.test-box{grid-template-columns:minmax(0,1fr)}
  .hero2-grid{gap:56px}
  .hero2-visual{max-width:560px}
  .dash{transform:none}
@@ -265,6 +283,11 @@ a:hover>.pain-link::after{transform:translateX(5px)}
  .marquee-track{font-size:17px;gap:40px}
  .pain-grid,.svc-grid,.promise-list{grid-template-columns:minmax(0,1fr)}
  .pain-card{padding:22px}
+ .section-heading h2 br,.test-copy h2 br,.guide-intro h2 br{display:none}
+ .door-grid{grid-template-columns:minmax(0,1fr)}
+ .door{padding:24px}
+ .test-result{padding:22px}
+ .test-result .button{width:100%;text-align:center}
  .pain-card q{font-size:19px}
  .calc-fields{grid-template-columns:minmax(0,1fr);padding:20px}
  .calc-result{padding:22px}

@@ -47,7 +47,7 @@
   onScroll();
 
   // Cursor-following light on cards.
-  const spotCards = document.querySelectorAll('.pain-card,.svc-card,.case-card,.project,.detail-grid article,.phase-card,.spreadsheet-card');
+  const spotCards = document.querySelectorAll('.pain-card,.case-card,.project,.detail-grid article,.phase-card,.spreadsheet-card');
   spotCards.forEach(card => {
     card.classList.add('spot');
     card.addEventListener('pointermove', event => {
@@ -67,7 +67,7 @@
         setTimeout(() => { entry.target.style.transitionDelay = ''; }, 1000);
       }
     }), { threshold: 0.08 });
-    document.querySelectorAll('.pain-card,.svc-card,.case-card,.detail-grid article,.spreadsheet-card,.case-detail,.price-demo,.calc,.guide,.promise-list li,.faq details,.steps article').forEach(element => {
+    document.querySelectorAll('.pain-card,.case-card,.detail-grid article,.spreadsheet-card,.case-detail,.price-demo,.calc,.test-box,.guide,.promise-list li,.faq details,.steps article').forEach(element => {
       const index = [...element.parentElement.children].indexOf(element);
       element.classList.add('reveal');
       element.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
