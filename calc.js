@@ -2,7 +2,7 @@
 (() => {
   const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
   const pct = value => `${value.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`;
-  const whatsapp = text => `https://wa.me/5531989878715?text=${encodeURIComponent(text)}`;
+  const whatsapp = text => `https://wa.me/5531984610556?text=${encodeURIComponent(text)}`;
 
   // Profit calculator.
   const calc = document.querySelector('[data-calc]');

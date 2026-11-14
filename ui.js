@@ -13,7 +13,7 @@
   const pageLink = document.querySelector('.closing a[href*="wa.me"][href*="text="]');
   const float = document.createElement('a');
   float.className = 'wa-float';
-  float.href = pageLink ? pageLink.href : 'https://wa.me/5531989878715';
+  float.href = pageLink ? pageLink.href : 'https://wa.me/5531984610556';
   float.target = '_blank';
   float.rel = 'noopener noreferrer';
   float.setAttribute('aria-label', 'Falar com a NGTech no WhatsApp');
