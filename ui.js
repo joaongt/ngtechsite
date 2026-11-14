@@ -46,17 +46,6 @@
   }, { passive: true });
   onScroll();
 
-  // Cursor-following light on cards.
-  const spotCards = document.querySelectorAll('.pain-card,.case-card,.project,.detail-grid article,.phase-card,.spreadsheet-card');
-  spotCards.forEach(card => {
-    card.classList.add('spot');
-    card.addEventListener('pointermove', event => {
-      const box = card.getBoundingClientRect();
-      card.style.setProperty('--mx', `${event.clientX - box.left}px`);
-      card.style.setProperty('--my', `${event.clientY - box.top}px`);
-    });
-  });
-
   // Staggered reveal for elements script.js does not already cover.
   if ('IntersectionObserver' in window && !reduceMotion) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
@@ -67,7 +56,7 @@
         setTimeout(() => { entry.target.style.transitionDelay = ''; }, 1000);
       }
     }), { threshold: 0.08 });
-    document.querySelectorAll('.pain-card,.case-card,.detail-grid article,.spreadsheet-card,.case-detail,.price-demo,.calc,.test-box,.guide,.promise-list li,.faq details,.steps article').forEach(element => {
+    document.querySelectorAll('.pain-card,.case-card,.detail-grid article,.spreadsheet-card,.case-detail,.price-demo,.calc,.guide,.diag,.promise-list li,.faq details,.steps article').forEach(element => {
       const index = [...element.parentElement.children].indexOf(element);
       element.classList.add('reveal');
       element.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
